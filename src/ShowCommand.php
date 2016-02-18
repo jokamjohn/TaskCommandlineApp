@@ -3,29 +3,12 @@
 
 namespace Kagga;
 
-
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class ShowCommand extends Command
 {
-    /**
-     * @var DatabaseAdapter
-     */
-    private $database;
-
-    /**
-     * ShowCommand constructor.
-     * @param DatabaseAdapter $database
-     */
-    public function __construct(DatabaseAdapter $database)
-    {
-        $this->database = $database;
-
-        parent::__construct();
-    }
 
     /**
      * Set up the Command
@@ -51,9 +34,13 @@ class ShowCommand extends Command
      *
      * @param $output
      */
-    private function showTasks($output)
+    private function showTasks(OutputInterface $output)
     {
         $tasks = $this->database->fetchAll('tasks');
+
+        if (! $tasks) {
+            return $output->writeln("<info>No tasks yet</info>");
+        }
 
         $table = new Table($output);
 

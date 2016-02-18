@@ -4,6 +4,7 @@
 
 require 'vendor/autoload.php';
 
+use Kagga\AddCommand;
 use Kagga\DatabaseAdapter;
 use Kagga\ShowCommand;
 use Symfony\Component\Console\Application;
@@ -28,5 +29,7 @@ try {
 $database = new DatabaseAdapter($pdo);
 
 $app->add(new ShowCommand($database));
+
+$app->add(new AddCommand($database));
 
 $app->run();
