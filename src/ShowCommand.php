@@ -30,23 +30,4 @@ class ShowCommand extends Command
         $this->showTasks($output);
     }
 
-    /**Show the tasks from the database.
-     *
-     * @param $output
-     */
-    private function showTasks(OutputInterface $output)
-    {
-        $tasks = $this->database->fetchAll('tasks');
-
-        if (! $tasks) {
-            return $output->writeln("<info>No tasks yet</info>");
-        }
-
-        $table = new Table($output);
-
-        $table->setHeaders(['id', 'Description'])
-            ->setRows($tasks)
-            ->render();
-    }
-
 }

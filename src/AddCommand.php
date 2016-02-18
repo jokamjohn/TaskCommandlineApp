@@ -21,6 +21,7 @@ class AddCommand extends Command
     }
 
     /**Execute the Command
+     * After adding a task, show the table.
      *
      * @param InputInterface $input
      * @param OutputInterface $output
@@ -34,6 +35,8 @@ class AddCommand extends Command
             compact('description'));
 
         $output->writeln("<info>Task Added!!</info>");
+
+        $this->showTasks($output);
     }
 
 }
