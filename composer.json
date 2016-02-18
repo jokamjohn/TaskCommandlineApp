@@ -1,0 +1,21 @@
+{
+  "name": "kagga/task",
+  "description": "Command line task app",
+  "require": {
+    "symfony/console": "^3.0",
+    "guzzlehttp/guzzle": "^6.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kagga\\": "src"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "johnkagga",
+      "email": "johnkagga@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable"
+}
